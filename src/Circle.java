@@ -4,24 +4,42 @@ public class Circle {
     private double radius;
     private String color;
 
-
-    public Circle() {
+    public Circle(){
         radius = 1.0;
         color = "red";
     }
 
-    //because this constructor is double awesome.
-    public Circle(double rad){
-        radius = rad;
-        color = "red";
+    public Circle(double rad){  //because this constructor is doubly awesome.
+        radius = rad;           //literally used rad instead of radius for that joke
+        color = "red";          //see below where I used "this." instead.
     }
 
+    public Circle(double radius, String color){
+        this.radius = radius;
+        this.color = color;
+    }
 
-    public double getRadius() {
+    public double getRadius(){
         return radius;
     }
 
-    public double getArea() {
+    public void setRadius(double radius){
+        this.radius = radius;
+    }
+
+    public String getColor(){
+        return color;
+    }
+
+    public void setColour(String color) {
+        this.color = color;
+    }
+
+    public double getArea(){
         return Math.PI * Math.pow(radius, 2);
+    }
+
+    public String toString(){
+        return "Circle";
     }
 }
