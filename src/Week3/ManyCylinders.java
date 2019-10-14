@@ -19,7 +19,7 @@ public class ManyCylinders extends Cylinder{
         for (int i = 0; i < noOfCylinders; i++){
             System.out.print("(D)efault or (C)ustomised size? > ");
             //haven't added any sort of exception handling because that wasn't required.
-            //user will select D or C to determine which path to take
+            //user will select D or C to determine which path to take, FOR EACH INDIVIDUAL CYLINDER
             String choice = scanner.next();
             if (choice.toLowerCase().equals("d")){
                 cylinders[i] = new Cylinder();
