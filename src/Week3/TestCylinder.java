@@ -6,7 +6,6 @@ public class TestCylinder {
 
     public static void main(String[] args){
 
-
         System.out.println("\nThese are the default cylinders");
         System.out.println();
         Cylinder c1 = new Cylinder();
@@ -35,35 +34,38 @@ public class TestCylinder {
         So it's still a multidimensional array, it just has a very flat second dimension.
          */
 
-        System.out.print("Please enter number of cylinders: ");
+        System.out.print("Please enter number of cylinders (no more than 100): ");
         Scanner scanner = new Scanner(System.in);
         int noOfCylinders = scanner.nextInt();
-
-        ManyCylinders mc = new ManyCylinders(noOfCylinders);
-        if (mc.defOrCust().toLowerCase().equals("d")){
-            mc.defaultCylinders(noOfCylinders);
+        if (noOfCylinders > 100){
+            System.out.println("Sorry, too many");
         }
         else {
-            System.out.print("Height > ");
-            double height = scanner.nextDouble();
-            System.out.print("Radius > ");
-            double rad = scanner.nextDouble();
-            mc.customCylinders(noOfCylinders, height, rad);
-        }
 
-        //below are the ones from the array
-        System.out.println("\n----------------------------------------------");
-        System.out.println("Below are the cylinders stored in the array\n");
+            ManyCylinders mc = new ManyCylinders(noOfCylinders);
+            if (mc.defOrCust().toLowerCase().equals("d")) {
+                mc.defaultCylinders(noOfCylinders);
+            } else {
+                System.out.print("Height > ");
+                double height = scanner.nextDouble();
+                System.out.print("Radius > ");
+                double rad = scanner.nextDouble();
+                mc.customCylinders(noOfCylinders, height, rad);
+            }
 
-        for(int i = 0; i < mc.cylinders.length; i++) {
-            for (int j = 0; j < mc.cylinders[i].length; j++) {
-                System.out.println("\nCylinder radius: " + mc.cylinders[i][j].getRadius() +
-                        ". Cylinder height: " + mc.cylinders[i][j].getHeight() +
-                        ". Cylinder area: " + mc.cylinders[i][j].getArea() +
-                        ". Cylinder volume: " + mc.cylinders[i][j].getVolume() +
-                        ". Cylinder colour: " + mc.cylinders[i][j].getColor());
+            //below are the ones from the array
+            System.out.println("\n----------------------------------------------");
+            System.out.println("Below are the cylinders stored in the array\n");
+
+            for (int i = 0; i < mc.cylinders.length; i++) {
+                for (int j = 0; j < mc.cylinders[i].length; j++) {
+                    System.out.println("\nCylinder radius: " + mc.cylinders[i][j].getRadius() +
+                            ". Cylinder height: " + mc.cylinders[i][j].getHeight() +
+                            ". Cylinder area: " + mc.cylinders[i][j].getArea() +
+                            ". Cylinder volume: " + mc.cylinders[i][j].getVolume() +
+                            ". Cylinder colour: " + mc.cylinders[i][j].getColor());
+                }
             }
         }
-
     }
 }
