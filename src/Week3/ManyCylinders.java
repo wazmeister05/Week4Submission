@@ -4,43 +4,36 @@ import java.util.Scanner;
 
 public class ManyCylinders extends Cylinder{
 
-    Cylinder[] cylinders;
+    Cylinder[][] cylinders;
     private Scanner scanner;
 
     //initialise scanner
-    public ManyCylinders(){
+    public ManyCylinders(int noOfCylinders){
         scanner = new Scanner(System.in);
+        cylinders = new Cylinder[noOfCylinders][1];
     }
 
-    public void fillCylinderOfCylinders(){
-        System.out.print("Please enter number of cylinders: ");
-        int noOfCylinders = scanner.nextInt();
-        cylinders = new Cylinder[noOfCylinders];
-        for (int i = 0; i < noOfCylinders; i++){
-            System.out.print("(D)efault or (C)ustomised size? > ");
-            //haven't added any sort of exception handling because that wasn't required.
-            //user will select D or C to determine which path to take, FOR EACH INDIVIDUAL CYLINDER
-            String choice = scanner.next();
-            if (choice.toLowerCase().equals("d")){
-                cylinders[i] = new Cylinder();
-            }
-            else{
-                System.out.print("Height > ");
-                double height = scanner.nextDouble();
-                System.out.print("Radius > ");
-                double rad = scanner.nextDouble();
-                cylinders[i] = new Cylinder(rad, height);
-            }
+    public String defOrCust(){
+        System.out.print("(D)efault or (C)ustomised size? > ");
+        return scanner.next();
+    }
 
+    public void defaultCylinders(int noOfCylinders){
+        for (int i = 0; i < noOfCylinders; i++){
+            for (int j = 0; j < cylinders[i].length; j++) {
+                Cylinder cylinder = new Cylinder();
+                cylinders[i][j] = cylinder;
+            }
         }
     }
 
-    public void defaultCylinders(){
-
-    }
-
-    public void customCylinders(){
-
+    public void customCylinders(int noOfCylinders, double height, double rad){
+        for (int i = 0; i < noOfCylinders; i++){
+            for (int j = 0; j < cylinders[i].length; j++) {
+                Cylinder cylinder = new Cylinder(rad, height);
+                cylinders[i][j] = cylinder;
+            }
+        }
     }
 
 }
