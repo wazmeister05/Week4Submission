@@ -1,4 +1,10 @@
 package Week3;
+/*
+        This problem bothered me. I wanted to create a 10x10 array and populate that but it turns out that
+        if you create say 4 cylinders, it creates the 4 and then iterates over the rest of the array anyway.
+        So my solution (probably the wrong one) was to create an array of length [specified by user] and depth 1.
+        So it's still a multidimensional array, it just has a very flat second dimension.
+         */
 
 import java.util.Scanner;
 
@@ -6,39 +12,20 @@ public class TestCylinder {
 
     public static void main(String[] args){
 
-        System.out.println("\nThese are the default cylinders");
-        System.out.println();
-        Cylinder c1 = new Cylinder();
-        System.out.println("Cylinder radius: " + c1.getRadius() +
-                ". Cylinder height: " + c1.getHeight() +
-                ". Cylinder area: " + c1.getArea() +
-                ". Cylinder volume: " + c1.getVolume() +
-                ". Cylinder colour: " + c1.getColor());
+        //first deal with normal cylinders
+        normalCylinders();
 
-        Cylinder c2 = new Cylinder(5.0, 2.0);
-        System.out.println("\nCylinder radius: " + c2.getRadius() +
-                ". Cylinder height: " + c2.getHeight() +
-                ". Cylinder area: " + c2.getArea() +
-                ". Cylinder volume: " + c2.getVolume() +
-                ". Cylinder colour: " + c2.getColor());
+        //now deal with custom cylinder array
+        customCylinders();
+    }
 
-
-        System.out.println("\n\n");
-
-
-        //create the cylinder array and populate it before printing everything
-        /*
-        This problem bothered me. I wanted to create a 10x10 array and populate that but it turns out that
-        if you create say 4 cylinders, it creates the 4 and then iterates over the rest of the array anyway.
-        So my solution (probably the wrong one) was to create an array of length [specified by user] and depth 1.
-        So it's still a multidimensional array, it just has a very flat second dimension.
-         */
-
+    private static void customCylinders() {
         System.out.print("Please enter number of cylinders (no more than 100): ");
         Scanner scanner = new Scanner(System.in);
         int noOfCylinders = scanner.nextInt();
         if (noOfCylinders > 100){
             System.out.println("Sorry, too many");
+            customCylinders();
         }
         else {
 
@@ -67,5 +54,24 @@ public class TestCylinder {
                 }
             }
         }
+    }
+
+    private static void normalCylinders() {
+        System.out.println("\nThese are the default cylinders");
+        System.out.println();
+        Cylinder c1 = new Cylinder();
+        System.out.println("Cylinder radius: " + c1.getRadius() +
+                ". Cylinder height: " + c1.getHeight() +
+                ". Cylinder area: " + c1.getArea() +
+                ". Cylinder volume: " + c1.getVolume() +
+                ". Cylinder colour: " + c1.getColor());
+
+        Cylinder c2 = new Cylinder(5.0, 2.0);
+        System.out.println("\nCylinder radius: " + c2.getRadius() +
+                ". Cylinder height: " + c2.getHeight() +
+                ". Cylinder area: " + c2.getArea() +
+                ". Cylinder volume: " + c2.getVolume() +
+                ". Cylinder colour: " + c2.getColor());
+        System.out.println("\n\n");
     }
 }
