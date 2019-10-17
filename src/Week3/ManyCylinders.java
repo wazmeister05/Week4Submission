@@ -35,4 +35,12 @@ public class ManyCylinders extends Cylinder{
         }
     }
 
+    public void defaultCylinders(){
+
+    }
+
+    public void customCylinders(){
+
+    }
+
 }
